@@ -1,0 +1,208 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{CS1800 Final}
+\author{clarke.br }
+\date{April 2021}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+
+\begin{document}
+
+\maketitle
+
+\section{Scrabble}
+
+Below is the letter distribution of the tiles of a Scrabble game.  For all problems let the blank tile be any needed lettered tile. This problem will take some liberties to simplify Scrabble.  Assume that there is only 1 player and plays cannot be onto other words.  After each play redraw to 7 tiles in hand.
+
+\begin{center}
+    A-9
+    
+    B-2
+    
+    C-2
+    
+    D-4
+    
+    E-12
+    
+    F-2
+    
+    G-3
+    
+    H-2
+    
+    I-9
+    
+    J-1
+    
+    K-1
+    
+    L-4
+    
+    M-2
+    
+    N-6
+    
+    O-8
+    
+    P-2
+    
+    Q-1
+    
+    R-6
+    
+    S-4
+    
+    T-6
+    
+    U-4
+    
+    V-2
+    
+    W-2
+    
+    X-1
+    
+    Y-2
+    
+    Z-1
+    
+    Blank-2
+    
+\end{center}
+
+\subsection{Expected number of draws}
+
+What is the expected number of draws of Scrabble tiles to draw a vowel?  There are $42$ vowels, $56$ consonants, and $2$ blank tiles.
+\\
+
+
+The expected number of vowels on the first draw is $\frac{44}{100}$.  The current sum is $\frac{44}{100}$.
+\\
+The expected number of vowels on the second draw is $\frac{44}{99}$.  The current sum is $\frac{8756}{9900}$.
+\\
+The expected number of vowels on the third draw is $\frac{44}{98}$.  The current sum is $\frac{1293688}{970200}$.
+\\
+This is greater than $1$, so the expected number of draws to draw a vowel is $3$.
+
+\subsection{Draws until a pair}
+
+What is the minimum number of draws to guarantee a pair is drawn?
+\\
+
+
+To not have a pair there must be only $1$ of each type of tile, so there are $26$ different types of tile and the $27^{th}$ draw will guarantee a pair.
+
+\subsection{VODPYL?}
+
+You have drawn the letter set VODPYL and have 1 more draw to fill your hand. What chance do you have to draw a letter which will let you play a 5 or better word?
+\\
+Being a Scrabble wizard you know there are $11$ such letters: I, E, L, Y, O, P, S, D, G, N, and M.  dop$i$ly, d$e$ploy, dol$l$y, do$o$ly, lop$p$y, ploy$s$, od$d$ly, $g$odly, pylo$n$, and $m$oldy for example.
+\\
+
+
+Originally there are $9+12+4+2+8+2+4+4+3+6+2+2=58$ such letters, but $5$ have been drawn. So there are $53$ such letters and $94$ remaining tiles.  There is a $\frac{53}{94}$ chance of being able to make a 5 or better long word.  This is equivalent to $0.564$.
+
+\subsection{Replacement}
+
+Your hand is full of 7 $E's$, you return 5 of them to the pool then draw 5 replacements. What is the chance of getting another $E$ in those 5 replacement draws?  $Note: Do\ not\ consider\ the\ blank\ tiles\ as\ Es$
+\\
+
+
+There are 12 E's originally, so after drawing 7 and replacing 5 there are 10 in the pool.  The chance of not drawing an E would be $\frac{88}{98} * \frac{87}{97} * \frac{86}{96} * \frac{85}{95} * \frac{84}{94}=0.577$ So there is a $1-0.577=0.423$ chance of drawing an E.
+
+\subsection{Replacement 2.0}
+
+After rereading the Scrabble rules you notice that the tiles you wish to replace are not put back into the pool until after drawing replacements, show how this changes the previous problem's solution.
+\\
+
+There are 12 E's originally, so after drawing 7 there are 5 in the pool.  The chance of not drawing an E would be $\frac{88}{93} * \frac{87}{92} * \frac{86}{91} * \frac{85}{90} * \frac{84}{89}=0.754$ So there is a $1-0.577=0.246$ chance of drawing an E.
+
+\subsection{Game end}
+
+By keeping careful track of the tiles throughout the game you know the pool has EEELNOQ remaining.  AEMOSSU is your current hand.  What is the best play for the next two rounds, consider only the points that would be accrued in the next two turns for this question.  Below is the point values of each letter in Scrabble.  Scrabble scores by giving points according to the value of each letter used in a word. Best for this problem means the average number of points using that strategy. 
+
+\begin{center}
+    A-1
+    
+    B-3
+    
+    C-3
+    
+    D-2
+    
+    E-1
+    
+    F-4
+    
+    G-2
+    
+    H-4
+    
+    I-1
+    
+    J-8
+    
+    K-5
+    
+    L-1
+    
+    M-3
+    
+    N-1
+    
+    O-1
+    
+    P-3
+    
+    Q-10
+    
+    R-1
+    
+    S-1
+    
+    T-1
+    
+    U-1
+    
+    V-4
+    
+    W-4
+    
+    X-8
+    
+    Y-4
+    
+    Z-10
+    
+    Blank-0
+    
+\end{center}
+\\
+
+Replacing the A is worth 8 in $\frac{6}{7}$ and is worth 18 in $\frac{1}{7}$ if the Q is drawn for MOSQUES.  This is worth 9.43 points.
+
+Doing the same with the O is worth 8 in $\frac{5}{7}$ and is worth 18 in $\frac{1}{7}$ if the Q is drawn for MASQUES.  And there is a $\frac{1}{7}$ for the N for UNSEAMS, worth 9.This is worth 9.57 points.
+
+AEMOUSS can play AMUSES, ASSUME, MOUSES, or MOUSES for 8 points.  Playing AMUSES or ASSUME leaves an O and can draw 6 of the 7 remaining tiles, of which the best score possible is 5, LEONE.  The total of this is 13 points, which occurs in $\frac{5}{7}$ instances.  12 points comes when you don't draw the N and have to play OLEO, $\frac{1}{7}$. 11 points comes when you don't draw the L and have to play one of EON, NEE, NOO, ONE, or ONO $\frac{1}{7}$. The expected value of playing AMUSES or ASSUME is 12.57 points. 
+
+Playing AMUSE is worth 7 leaves SO and can draw 5 of the 7 remaining tiles, of which the best score possible is 5, LEONE.  In the best case this is still less than the expected of playing AMUSES.
+
+Playing MOUSES or MOUSSE leaves an A and can draw 6 of the 7 remaining tiles, of which the best score possible is 6, LOANEE.  The total of this is 14 points, which occurs in $\frac{4}{7}$ instances.  13 points comes when you don't draw the O and have to play ANELE, $\frac{1}{7}$. 12 points comes when you don't draw the N or L and have to play one of AEON, ALEE, ALOE, or OLEA $\frac{2}{7}$. The expected value of playing AMUSES or ASSUME is 13.29 points. 
+
+Playing OASES is worth 5, leaving MU and can draw 5 tiles.  There are 21 combinations of missed letters, 3*EE, 3*EL, 3*EO, 3*EQ, 3*EN, LO, LQ, LN, OQ, ON, and QN.  EE,EQ,EN, LQ, OQ, QN, and ON are worth 7 with LEMON, OLEUM, MELEE and NEUME $\frac{13}{21}$. EL,EO,LO are worth 14 with QUEEN $\frac{1}{3}$.  LN is worth 4 with EMEU $\frac{1}{21}$.  The expected value of playing this is 14.19 points.
+
+Playing MASES, MASSE, MESAS, or SEAMS is worth 7, leaving OU and can draw 5 tiles.  There are 21 combinations of missed letters, 3*EE, 3*EL, 3*EO, 3*EQ, 3*EN, LO, LQ, LN, OQ, ON, and QN.  EE,EN,QN are worth 4 with LONE and OLEO $\frac{1}{3}$. EL,EO,LO are worth 14 with QUEEN $\frac{1}{3}$. EQ,OQ are worth 5 with LEONE $\frac{4}{21}$. LQ,ON are worth 3 with EON, EEL$\frac{2}{21}$.  LN is worth 2 with OE $\frac{1}{21}$.  The expected value of playing one of these is 14.33 points.
+
+Playing SEAM is worth 6, leaving OUS and can draw 4 tiles.  The possible drawn tiles are EEEL, EEEO, EEEN, EEEQ, 3EELO, 3EELN, 3EELQ, 3EEON, 3EEOQ, 3EENQ, 3ELON, 3ELOQ, 3EONQ, 3ELNQ LONQ.  EELQ and EENQ are worth 15 with SEQUEL, QUEENS, $\frac{6}{35}$. EEEQ and EEOQ are worth 14 with EQUES $\frac{4}{35}$. ELOQ, ELNQ, LONQ and EONQ are worth 12 with SUQ, $\frac{10}{35}$. ELON is worth 7 with UNLOOSE, $\frac{3}{35}$ EELN is woth 6 with ENSOUL, $\frac{3}{35}$. EELO, EEEL, EEON and EEEN is worth 5 with LOUSE and ENSUE $\frac{8}{35}$. EEEO is worth 3 with SEE $\frac{1}{35}$.  The expected number of points is 15.94. 
+
+Playing SOME is worth 6, leaving AUS and can draw 4 tiles.  The possible drawn tiles are EEEL, EEEO, EEEN, EEEQ, 3EELO, 3EELN, 3EELQ, 3EEON, 3EEOQ, 3EENQ, 3ELON, 3ELOQ, 3EONQ, 3ELNQ LONQ.  EELQ is worth 16 with QUESLEAS, $\frac{3}{35}$. EENQ, ELOQ, ELNQ, and EONQ are worth 15 with QUEENS, EQUALS, QUEANS $\frac{12}{35}$. EEEQ, EEOQ are worth 14 with EQUES, $\frac{4}{35}$. LONQ is worth 12 with SUQ, $\frac{1}{35}$.  EONS is worth 7 with AENEOUS, $\frac{3}{35}$. ELON, EELN, EEEN are worth 6 with UNEASE, UNSEAL, $\frac{7}{35}$. EELO, EEEL are worth 5 with EASEL, $\frac{4}{35}$.  EEEO is worth 4 with EASE, $\frac{1}{35}$.  The expected number of points is 16.94.
+
+Using only EMO (5 points) for the first word to give the second word an extra S does not seem to help.  EEE, 3EEL, 3EEO, 3EEN, 3EEQ, 3ELO, 3ELN, 3ELQ, 3EON, 3EOQ, 3ENQ, LON, LOQ, ONQ, LNQ are the possible draws after the first play.  ELQ is 16 with SQUEALS $\frac{3}{35}$. ENQ is 15 with QUEANS, $\frac{3}{35}$. EOQ, ONQ, LNQ, LOQ, EEQ are 14 points, QUASS,  $\frac{9}{35}$. ELN, EEN is 7 with UNSEALS, UNEASES $\frac{6}{35}$. EEL, EON, LON, ELO are 6 points with SALONS, SEASON, LOUSES, LEASES, $\frac{10}{35}$. EEO, EEE are 5 points with EASES, $\frac{4}{35}$
+The expected number of points is 14.74. 
+
+This is in no means an exhaustive list of possible plays, but in order to get a high score it requires playing on both turns and playing words with enough letters to have a good shot at getting a word with the Q in it, hence SOME is a good play. This makes use of the word SUQ and EQUESS, which are uncommon words that by leaving a S for the second word are possible to make and use the Q. 
+
+\end{document}
